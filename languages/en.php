@@ -3,6 +3,7 @@
 add_translation('en', array(
 	'etherpad' => 'e-Docs',
 	'etherpad:group' => 'e-Docs',
+	'group:pads' => 'e-Docs\' group',
 	'etherpad:friends' => 'e-Docs friends',
 	'etherpad:url' => 'e-Doc link (URL)',
 	'etherpad:add' => 'Create link',
@@ -20,6 +21,7 @@ add_translation('en', array(
 	'etherpad:register:no:saved' => 'e-Doc no saved',
 	'etherpad:delete:success' => 'e-Doc delete success',
 	'etherpad:delete:fail' => 'e-Doc delete failed',
+	
 	// settings
 	'etherpad:base_url' => 'Etherpad URL Base',
 	'etherpad:example' => 'Example: https://beta.etherpad.org',

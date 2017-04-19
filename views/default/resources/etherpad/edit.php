@@ -2,7 +2,7 @@
 
 gatekeeper();
 
-$pad_guid = get_input('guid');
+$pad_guid = elgg_extract('guid', $vars);
 $pad = get_entity($pad_guid);
 
 if (!elgg_instanceof($pad, 'object', 'etherpad') || !$pad->canEdit()) {
