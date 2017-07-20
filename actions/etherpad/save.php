@@ -62,7 +62,8 @@ if ($pad_guid) {
 		));
 	}
 
-	forward($pad->getURL());
+	//forward($pad->getURL());
+	forward("etherpad/group/" . $group_guid);
 } else {
 	register_error(elgg_echo('etherpad:register:no:saved'));
 	forward(REFERER); // REFERER is a global variable that defines the previous page
