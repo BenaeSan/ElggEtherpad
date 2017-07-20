@@ -10,7 +10,7 @@ if (!$pad) {
 }
 
 $pad_url = elgg_view('output/url', array(
-	'href' => $pad->url . "?userName=" . $user_id->name,
+	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') ."" . $pad->url . "?userName=" . $user_id->name,
 	'text' => $pad->url,
 	'target' => "_blank"
 		));
