@@ -9,10 +9,12 @@ if (!$pad) {
 	return;
 }
 
-$pad_url = elgg_view('output/url', array(
-	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') ."" . $pad->url . "?userName=" . $user_id->name,
-	'text' => $pad->url,
-	'target' => "_blank"
+$pad_url = elgg_view('output/raw_url', array(
+//	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') ."" . $pad->url . "?userName=" . $user_id->name,
+
+	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') . $pad->url . "?userName=" . $user_id->name,
+	'text' => $pad->name,
+	'target' => "_blank", 
 		));
 
 $owner_link = elgg_view('output/url', array(

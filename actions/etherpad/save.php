@@ -4,8 +4,9 @@
 
 gatekeeper();
 $user_guid = elgg_get_logged_in_user_guid();
-$url = get_input('url');
-$objetive = get_input('objetive');
+$name = get_input('name');
+$url = str_replace(' ', '_', get_input('url'));
+$objetive = get_input('objetive', " ");
 $access_id = get_input('access_id');
 $guid = get_input('guid');
 $group_guid = get_input('group_guid');
@@ -36,6 +37,8 @@ if ($guid == 0) {
 	}
 	$new = false;
 }
+
+$pad->name = $name;
 // for now make all etherpad posts public
 $pad->access_id = $access_id;
 $pad->objetive = $objetive;

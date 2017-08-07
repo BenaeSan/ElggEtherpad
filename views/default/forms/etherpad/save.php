@@ -7,9 +7,12 @@ for ($i = 0; $i < $random_string_length; $i++) {
 	$stringpad .= $characters[rand(0, strlen($characters) - 1)];
 }
 
+$entity = elgg_extract('entity', $vars);
+
 $urlpad = elgg_extract('url', $vars, '');
 if (!$urlpad) {
-	$urlpad = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $stringpad;
+	//$urlpad = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $stringpad;
+	$urlpad = "/p/" . $stringpad;
 }
 $objetive = elgg_extract('objetive', $vars, '');
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
@@ -19,9 +22,17 @@ $group_guid = elgg_get_page_owner_guid();
 ?>
 
 <div>
-    <label><?php echo elgg_echo("etherpad:url"); ?></label><br />
+    
 	<?php
-	echo elgg_view('input/text', array('name' => 'url',
+        echo "<label>".elgg_echo("name")."</label><br />";
+	echo elgg_view('input/text', array('name' => 'name',
+                'label' => elgg_echo("name"),
+		'value' => $entity->name,
+		'disabled' => false));
+        
+        echo "<label>".elgg_echo("etherpad:url")."</label><br />";
+        echo elgg_view('input/text', array('name' => 'url',
+                'label' => elgg_echo("etherpad:url"),
 		'value' => $urlpad,
 		'disabled' => false));
 	?>
