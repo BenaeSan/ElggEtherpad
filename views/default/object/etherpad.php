@@ -6,30 +6,37 @@ $owner = $pad->getOwnerEntity();
 $owner_icon = elgg_view_entity_icon($owner, 'tiny');
 
 if (!$pad) {
-	return;
+    return;
 }
 
-$pad_url = elgg_view('output/raw_url', array(
-//	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') ."" . $pad->url . "?userName=" . $user_id->name,
-
-	'href' => elgg_get_plugin_setting('etherpad', 'etherpad') . $pad->url . "?userName=" . $user_id->name,
-	'text' => $pad->name,
-	'target' => "_blank", 
-		));
+if (elgg_is_active_plugin("jadeToolBox")) {
+    // the raw_url is a url without modification
+    $pad_url = elgg_view('output/raw_url', array(
+        'href' => elgg_get_plugin_setting('etherpad', 'etherpad') . $pad->url . "?userName=" . $user_id->name,
+        'text' => $pad->name,
+        'target' => "_blank",
+    ));
+} else {
+    $pad_url = elgg_view('output/url', array(
+        'href' => elgg_get_plugin_setting('etherpad', 'etherpad') . $pad->url . "?userName=" . $user_id->name,
+        'text' => $pad->name,
+        'target' => "_blank",
+    ));
+}
 
 $owner_link = elgg_view('output/url', array(
-	'href' => "etherpad/owner/$owner->username",
-	'text' => $owner->name,
-		));
+    'href' => "etherpad/owner/$owner->username",
+    'text' => $owner->name,
+        ));
 $author_text = elgg_echo('byline', array($owner_link));
 $date = elgg_view_friendly_time($pad->time_created);
 
 $metadata = elgg_view_menu('entity', array(
-	'entity' => $vars['entity'],
-	'handler' => 'etherpad',
-	'sort_by' => 'priority',
-	'class' => 'elgg-menu-hz',
-		));
+    'entity' => $vars['entity'],
+    'handler' => 'etherpad',
+    'sort_by' => 'priority',
+    'class' => 'elgg-menu-hz',
+        ));
 
 $subtitle = "$author_text $date";
 
@@ -39,14 +46,12 @@ $metadata .= $pad_url;
 
 
 $params = array(
-	'entity' => $pad,
-	'metadata' => $metadata,
-	'subtitle' => $subtitle,
-	'content' => $pad->objetive,
+    'entity' => $pad,
+    'metadata' => $metadata,
+    'subtitle' => $subtitle,
+    'content' => $pad->objetive,
 );
 //$params = $params + $vars;
 $body = elgg_view('object/elements/summary', $params);
 
 echo elgg_view_image_block($owner_icon, $body);
-
-

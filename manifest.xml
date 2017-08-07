@@ -15,6 +15,11 @@
         <type>elgg_release</type>
         <version>2.3</version>
     </requires>
+    <suggests>
+        <type>plugin</type>
+        <name>jadeToolBox</name>
+        <version>0.4</version>
+    </suggests>
     <category>content</category>
     <category>tools</category>
     <category>Jade</category>
