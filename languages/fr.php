@@ -9,7 +9,7 @@ return array(
 	'etherpad:url' => "URL du document",
 	'etherpad:add' => "Co-créer un document",
 	'etherpad:edit' => "Editer document",
-	'etherpad:objetive' => "Description",
+	'etherpad:objective' => "But",
 	'etherpad:none' => 'Pas de document disponible',
 	'etherpad:owner' => "Co-création",
 	'etherpad:everyone' => "Co-création",

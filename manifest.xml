@@ -3,7 +3,7 @@
     <name>Etherpad</name>
     <id>etherpad</id>
     <author>Benoit MOTTIN</author>
-    <version>1.0</version>
+    <version>1.2</version>
     <description>
         Based on Alejandro Mellado etherpad plugin for Elgg 1.9.
         Colaboration etherpad plugin.
@@ -15,11 +15,6 @@
         <type>elgg_release</type>
         <version>2.3</version>
     </requires>
-    <suggests>
-        <type>plugin</type>
-        <name>jadeToolBox</name>
-        <version>0.4</version>
-    </suggests>
     <category>content</category>
     <category>tools</category>
     <category>Jade</category>

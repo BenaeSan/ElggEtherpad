@@ -9,6 +9,7 @@
 function etherpad_prepare_form_vars($pad = null) {
 	// input names => defaults
 	$values = array(
+                'title' => get_input('title', ''),
 		'url' => get_input('url', ''),
 		'objetive' => get_input('objetive', ''),
 		'access_id' => ACCESS_DEFAULT,

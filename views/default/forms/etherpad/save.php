@@ -1,4 +1,28 @@
 <?php
+
+/* * **************************************************************************
+ * Copyright (C) 2017 Jade <http://www.jade.fr>
+ * 
+ * Benoit MOTTIN <benoit.mottin@jade.fr>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * ************************************************************************ */
+
+/*
+ * Name generator
+ * @TODO check if name not exit
+ */
 $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 $random_string_length = 10;
 
@@ -6,13 +30,12 @@ $stringpad = '';
 for ($i = 0; $i < $random_string_length; $i++) {
 	$stringpad .= $characters[rand(0, strlen($characters) - 1)];
 }
-
-$entity = elgg_extract('entity', $vars);
+ /* ----- End Name generator ----- */
 
 $urlpad = elgg_extract('url', $vars, '');
 if (!$urlpad) {
 	//$urlpad = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $stringpad;
-	$urlpad = "/p/" . $stringpad;
+	$urlpad = $stringpad;
 }
 $objetive = elgg_extract('objetive', $vars, '');
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
@@ -22,24 +45,25 @@ $group_guid = elgg_get_page_owner_guid();
 ?>
 
 <div>
-    
+    <label><?php echo elgg_echo("title"); ?></label><br />
 	<?php
-        echo "<label>".elgg_echo("name")."</label><br />";
-	echo elgg_view('input/text', array('name' => 'name',
-                'label' => elgg_echo("name"),
-		'value' => $entity->name,
-		'disabled' => false));
-        
-        echo "<label>".elgg_echo("etherpad:url")."</label><br />";
-        echo elgg_view('input/text', array('name' => 'url',
-                'label' => elgg_echo("etherpad:url"),
+	echo elgg_view('input/text', array(
+            'name' => 'title',
+            'required' => TRUE,
+            'disabled' => false));
+	?>
+</div>
+<div>
+    <label><?php echo elgg_echo("etherpad:url"); ?></label><br />
+	<?php
+	echo elgg_view('input/text', array('name' => 'url',
 		'value' => $urlpad,
 		'disabled' => false));
 	?>
 </div>
 
 <div>
-    <label><?php echo elgg_echo("etherpad:objetive"); ?></label><br />
+    <label><?php echo elgg_echo("etherpad:objective"); ?></label><br />
 	<?php echo elgg_view('input/longtext', array('name' => 'objetive', 'value' => $objetive)); ?>
 </div>
 <div>

@@ -8,7 +8,7 @@ add_translation('en', array(
 	'etherpad:url' => 'e-Doc link (URL)',
 	'etherpad:add' => 'Create link',
 	'etherpad:edit' => 'Edit e-Doc',
-	'etherpad:objetive' => 'Objetive',
+	'etherpad:objective' => 'Objective',
 	'etherpad:none' => 'No docs available',
 	'etherpad:owner' => 'e-Docs',
 	'etherpad:everyone' => 'e-Docs everyone',
