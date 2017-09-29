@@ -65,6 +65,15 @@ function etherpad_page_handler($page) {
         case 'add':
             echo elgg_view_resource('etherpad/add', $resource_vars);
             break;
+        // create a pad and link it to the page_wiki
+        case 'addWiki':
+            $resource_vars['guid'] = $page[1];
+            echo elgg_view_resource('etherpad/addWiki', $resource_vars);
+            break;
+        case 'updateWiki':
+            $resource_vars['guid'] = $page[1];
+            echo elgg_view_resource('etherpad/updateWiki', $resource_vars);
+            break;
         case 'edit':
             $resource_vars['guid'] = $page[1];
             echo elgg_view_resource('etherpad/edit', $resource_vars);

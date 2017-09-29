@@ -19,23 +19,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ************************************************************************ */
 
-/*
- * Name generator
- * @TODO check if name not exit
- */
-$characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-$random_string_length = 10;
-
-$stringpad = '';
-for ($i = 0; $i < $random_string_length; $i++) {
-	$stringpad .= $characters[rand(0, strlen($characters) - 1)];
-}
- /* ----- End Name generator ----- */
-
 $urlpad = elgg_extract('url', $vars, '');
 if (!$urlpad) {
 	//$urlpad = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $stringpad;
-	$urlpad = $stringpad;
+	$urlpad = Pad::PadNameGenerator();
 }
 $objetive = elgg_extract('objetive', $vars, '');
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);

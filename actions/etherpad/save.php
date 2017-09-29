@@ -40,8 +40,8 @@ if (!$url || !$objetive) {
 
 if (!$guid) {
     // create a new etherpad object
-    $pad = new ElggObject();
-    $pad->subtype = "etherpad";
+    $pad = new Pad();
+    //$pad->subtype = "etherpad";
     $new = true;
     
 } else {

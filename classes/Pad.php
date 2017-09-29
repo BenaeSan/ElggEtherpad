@@ -19,14 +19,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ************************************************************************ */
 
-?>
-<p>
-	<?php
-	echo elgg_echo('etherpad:base_url') . "<br>";
+/**
+ * Description of Pad
+ *
+ * @author Benoit MOTTIN <benoitmottin@jade.fr>
+ */
+class Pad extends ElggObject {
 
-	echo elgg_view('input/text', array('name' => 'params[etherpad]', 'value' => $vars['entity']->etherpad));
-	echo "&nbsp;" . elgg_echo('etherpad:example');
-	echo "<br>";
-	?>
+    protected function initializeAttributes() {
+        parent::initializeAttributes();
 
-</p>
+        $this->attributes['subtype'] = "etherpad";
+    }
+    
+    public static function PadNameGenerator() {
+        $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        $random_string_length = 10;
+
+        $stringpad = '';
+        for ($i = 0; $i < $random_string_length; $i++) {
+            $stringpad .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        
+        return $stringpad;
+    }
+
+}

@@ -22,6 +22,8 @@
 $full = elgg_extract('full_view', $vars, FALSE);
 $pad = elgg_extract('entity', $vars, FALSE);
 
+var_dump($pad);
+
 if (!$pad) {
     return TRUE;
 }
@@ -50,6 +52,14 @@ if ($full) {
         'subtitle' => $subtitle,
         'content' => $pad->description,
     );
+    
+    $url_update = "etherpad/updateWiki/$pad->guid";
+    elgg_register_menu_item('title', array(
+        'name' => 'etherpad',
+        'href' => $url_update,
+        'text' => elgg_echo('etherpad:edit:update:wiki'),
+        'link_class' => 'elgg-button elgg-button-action',
+    ));
 
     $params = $params + $vars;
     //$summary = elgg_view('object/elements/summary', $params);

@@ -3,10 +3,11 @@
     <name>Etherpad</name>
     <id>etherpad</id>
     <author>Benoit MOTTIN</author>
-    <version>1.2</version>
+    <version>1.3</version>
     <description>
+        Add group's pad and change the pages(wikis) behaviours to have a collaborative creation systems.
         Based on Alejandro Mellado etherpad plugin for Elgg 1.9.
-        Colaboration etherpad plugin.
+        
     </description>
     <website>http://www.jade.fr</website>
     <copyright>(c) Jade 2017 www.jade.fr</copyright>

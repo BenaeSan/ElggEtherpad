@@ -19,14 +19,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ************************************************************************ */
 
-?>
-<p>
-	<?php
-	echo elgg_echo('etherpad:base_url') . "<br>";
+$guid = elgg_extract('guid', $vars);
+$page = get_entity($guid);
 
-	echo elgg_view('input/text', array('name' => 'params[etherpad]', 'value' => $vars['entity']->etherpad));
-	echo "&nbsp;" . elgg_echo('etherpad:example');
-	echo "<br>";
-	?>
+elgg_dump("------PAGE-------");
+elgg_dump($page);
+elgg_dump("/------PAGE-------");
 
-</p>
+
+if($page->pad_id){
+    $urlpad = "etherpad/view/" . $page->pad_id;
+}else{
+    $pad = new Pad();    
+    $pad->name = $page->name;
+    $pad->url = Pad::PadNameGenerator();
+    $pad->page_id = $page->guid;
+    $pad->save();
+    $page->pad_id = $pad->guid;
+    $page->save();
+    $urlpad = "etherpad/view/" . $pad->guid;
+}
+
+
+elgg_dump("------PAD-------");
+elgg_dump($pad);
+elgg_dump("/------/PAD-------");
+
+elgg_dump("------PAGE-------");
+elgg_dump($page);
+elgg_dump("/------PAGE-------");
+
+forward($urlpad);

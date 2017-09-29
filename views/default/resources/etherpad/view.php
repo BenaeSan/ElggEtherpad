@@ -30,7 +30,6 @@ $crumbs_title = $page_owner->name;
 
 $title = $pad->title;
 
-
 if (elgg_instanceof($page_owner, 'group')) {
     elgg_push_breadcrumb($crumbs_title, "etherpad/group/$page_owner->guid/all");
 } else {
@@ -40,12 +39,10 @@ if (elgg_instanceof($page_owner, 'group')) {
 elgg_push_breadcrumb($title);
 
 $content = elgg_view_entity($pad, array('full_view' => TRUE));
-//$content .= elgg_view_comments($pad);
 
 $body = elgg_view_layout('content', array(
     'content' => $content,
     'title' => $title,
         ));
-
 
 echo elgg_view_page($title, $body);

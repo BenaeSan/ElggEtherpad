@@ -19,14 +19,39 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ************************************************************************ */
 
-?>
-<p>
-	<?php
-	echo elgg_echo('etherpad:base_url') . "<br>";
+/*
+ * GEt the pad and extract content to update the wiki page
+ */
+$guid = elgg_extract('guid', $vars);
 
-	echo elgg_view('input/text', array('name' => 'params[etherpad]', 'value' => $vars['entity']->etherpad));
-	echo "&nbsp;" . elgg_echo('etherpad:example');
-	echo "<br>";
-	?>
+$pad = get_entity($guid);
 
-</p>
+
+
+
+var_dump($pad);
+var_dump($pad->page_id);
+$page = get_entity($pad->page_id);
+
+
+$url = elgg_get_plugin_setting('etherpad', 'etherpad') . $pad->url .  "/export/html";
+$c = curl_init($url);
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$html = curl_exec($c);
+
+/*
+ * TODO
+ * CHORE retrieve content
+ */
+// cut just after bodyt
+$html = split("<body>", $html);
+
+// cut just before the last div
+$html = split("<div", $html[1]);
+
+$page->description = $html[0];
+
+$page->save();
+
+forward('pages/view/'.$page->guid);
