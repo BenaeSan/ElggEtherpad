@@ -24,8 +24,12 @@
 	<?php
 	echo elgg_echo('etherpad:base_url') . "<br>";
 
-	echo elgg_view('input/text', array('name' => 'params[etherpad]', 'value' => $vars['entity']->etherpad));
-	echo "&nbsp;" . elgg_echo('etherpad:example');
+	echo elgg_view('input/text', array('name' => 'params[etherpad_url]', 'value' => $vars['entity']->etherpad_url));
+	echo "&nbsp;" . elgg_echo('etherpad:example:url'). "<br>". "<br>";
+	echo elgg_echo('etherpad:base_port') . "<br>";
+
+	echo elgg_view('input/text', array('name' => 'params[etherpad_port]', 'value' => $vars['entity']->etherpad_port));
+	echo "&nbsp;" . elgg_echo('etherpad:example:port');
 	echo "<br>";
 	?>
 

@@ -26,7 +26,13 @@ $guid = elgg_extract('guid', $vars);
 $pad = get_entity($guid);
 $page = get_entity($pad->page_id);
 
-$url = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $pad->url . "/export/html";
+$server = elgg_get_plugin_setting('etherpad_url', 'etherpad');
+$port = elgg_get_plugin_setting('etherpad_port', 'etherpad');
+if ($port) {
+    $url = $server . ":" . $port . "/p/" . $pad->url . "/export/html";
+} else {
+    $url = $server . "/p/" . $pad->url . "/export/html";
+}
 $c = curl_init($url);
 curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 

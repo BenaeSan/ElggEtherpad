@@ -1,4 +1,5 @@
 <?php
+
 /* * **************************************************************************
  * Copyright (C) 2017 Jade <http://www.jade.fr>
  * 
@@ -21,10 +22,15 @@
 /*
  * show a etherpad instance into a iframe
  */
-$server = elgg_get_plugin_setting('etherpad', 'etherpad');
+$server = elgg_get_plugin_setting('etherpad_url', 'etherpad');
+$port = elgg_get_plugin_setting('etherpad_port', 'etherpad');
 $url = elgg_extract('url', $vars);
 $user = elgg_get_logged_in_user_entity();
-$use_url = $server . '/p/' . $url;
+if($port){
+    $use_url = $server . ":" . $port . '/p/' . $url;    
+}else{
+    $use_url = $server . '/p/' . $url;
+}
 
 echo '
     <iframe 

@@ -21,8 +21,13 @@ add_translation('en', array(
 	'etherpad:register:no:saved' => 'e-Doc no saved',
 	'etherpad:delete:success' => 'e-Doc delete success',
 	'etherpad:delete:fail' => 'e-Doc delete failed',
+	'etherpad:edit:with:etherpad' => 'Edit',
+	'etherpad:edit:update:wiki' => 'Update the wiki document',    
 	
 	// settings
 	'etherpad:base_url' => 'Etherpad URL Base',
-	'etherpad:example' => 'Example: https://beta.etherpad.org',
+	'etherpad:base_port' => 'Etherpad port',
+    
+	'etherpad:example:url' => 'Example: https://beta.etherpad.org',
+	'etherpad:example:port' => 'Example: 9001',
 ));
