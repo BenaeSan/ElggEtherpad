@@ -28,6 +28,6 @@ add_translation('en', array(
 	'etherpad:base_url' => 'Etherpad URL Base',
 	'etherpad:base_port' => 'Etherpad port',
     
-	'etherpad:example:url' => 'Example: https://beta.etherpad.org',
+	'etherpad:example:url' => 'Example: https://etherpad.net',
 	'etherpad:example:port' => 'Example: 9001',
 ));

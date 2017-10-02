@@ -28,24 +28,23 @@ $page = get_entity($pad->page_id);
 
 $server = elgg_get_plugin_setting('etherpad_url', 'etherpad');
 $port = elgg_get_plugin_setting('etherpad_port', 'etherpad');
+
 if ($port) {
     $url = $server . ":" . $port . "/p/" . $pad->url . "/export/html";
 } else {
     $url = $server . "/p/" . $pad->url . "/export/html";
 }
-$c = curl_init($url);
-curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 
-$html = curl_exec($c);
+$html = file_get_contents($url);
 
 /*
  * TODO
  * CHORE retrieve content
  */
 // cut just after bodyt
-$html = split("<body>", $html);
+$html = explode ("<body>", $html);
 // cut just before the last div
-$html = split("<div", $html[1]);
+$html = explode ("<div", $html[1]);
 // update page content
 $page->annotate('page', $html[0], $page->access_id);
 
