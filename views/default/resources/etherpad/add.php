@@ -29,9 +29,9 @@ $vars = etherpad_prepare_form_vars();
 $content = elgg_view_form('etherpad/save', $form_vars, $vars);
 
 $body = elgg_view_layout('content', array(
-	'filter' => '',
-	'content' => $content,
-	'title' => $title,
-		));
+    'filter' => '',
+    'content' => $content,
+    'title' => $title,
+        ));
 
 echo elgg_view_page($title, $body);

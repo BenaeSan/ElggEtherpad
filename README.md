@@ -1,4 +1,5 @@
 This plugin saves and creates a link for writing group documents online to work collaboratively using etherpad.
+He also provides a new behaviour to wiki pages. You can edit collaboraly the page.
 
 You can use any public etherpad service, if prefere can install one.
 

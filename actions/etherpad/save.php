@@ -40,12 +40,10 @@ if (!$url || !$objetive) {
 
 if (!$guid) {
     // create a new etherpad object
-    $pad = new Pad();
-    //$pad->subtype = "etherpad";
+    $pad = new Pad();    
     $new = true;
-    
 } else {
-    $pad = get_entity($guid);    
+    $pad = get_entity($guid);
     $new = false;
 }
 // for now make all etherpad posts public
@@ -77,8 +75,8 @@ if ($pad_guid) {
         ));
     }
 
-    
-    forward("etherpad/group/". $group_guid."/all");
+
+    forward("etherpad/group/" . $group_guid . "/all");
 } else {
     register_error(elgg_echo('etherpad:register:no:saved'));
     forward(REFERER); // REFERER is a global variable that defines the previous page

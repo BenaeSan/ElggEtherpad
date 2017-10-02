@@ -1,5 +1,4 @@
 <?php
-
 /* * **************************************************************************
  * Copyright (C) 2017 Jade <http://www.jade.fr>
  * 
@@ -21,8 +20,7 @@
 
 $urlpad = elgg_extract('url', $vars, '');
 if (!$urlpad) {
-	//$urlpad = elgg_get_plugin_setting('etherpad', 'etherpad') . "/p/" . $stringpad;
-	$urlpad = Pad::PadNameGenerator();
+    $urlpad = Pad::PadNameGenerator();
 }
 $objetive = elgg_extract('objetive', $vars, '');
 $access_id = elgg_extract('access_id', $vars, ACCESS_DEFAULT);
@@ -33,29 +31,29 @@ $group_guid = elgg_get_page_owner_guid();
 
 <div>
     <label><?php echo elgg_echo("title"); ?></label><br />
-	<?php
-	echo elgg_view('input/text', array(
-            'name' => 'title',
-            'required' => TRUE,
-            'disabled' => false));
-	?>
+    <?php
+    echo elgg_view('input/text', array(
+        'name' => 'title',
+        'required' => TRUE,
+        'disabled' => false));
+    ?>
 </div>
 <div>
     <label><?php echo elgg_echo("etherpad:url"); ?></label><br />
-	<?php
-	echo elgg_view('input/text', array('name' => 'url',
-		'value' => $urlpad,
-		'disabled' => false));
-	?>
+    <?php
+    echo elgg_view('input/text', array('name' => 'url',
+        'value' => $urlpad,
+        'disabled' => false));
+    ?>
 </div>
 
 <div>
     <label><?php echo elgg_echo("etherpad:objective"); ?></label><br />
-	<?php echo elgg_view('input/longtext', array('name' => 'objetive', 'value' => $objetive)); ?>
+    <?php echo elgg_view('input/longtext', array('name' => 'objetive', 'value' => $objetive)); ?>
 </div>
 <div>
-	<label><?php echo elgg_echo('access'); ?></label><br />
-	<?php echo elgg_view('input/access', array('name' => 'access_id', 'value' => $access_id)); ?>
+    <label><?php echo elgg_echo('access'); ?></label><br />
+    <?php echo elgg_view('input/access', array('name' => 'access_id', 'value' => $access_id)); ?>
 </div>
 
 
@@ -63,10 +61,10 @@ $group_guid = elgg_get_page_owner_guid();
 echo elgg_view('input/hidden', array('name' => 'group_guid', 'value' => $group_guid));
 echo elgg_view('input/hidden', array('name' => 'container_guid', 'value' => $container_guid));
 if ($guid) {
-	echo elgg_view('input/hidden', array('name' => 'guid', 'value' => $guid));
+    echo elgg_view('input/hidden', array('name' => 'guid', 'value' => $guid));
 }
 ?>
 
 <div>
-	<?php echo elgg_view('input/submit', array('value' => elgg_echo('save'))); ?>
+    <?php echo elgg_view('input/submit', array('value' => elgg_echo('save'))); ?>
 </div>

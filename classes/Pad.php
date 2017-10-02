@@ -31,7 +31,7 @@ class Pad extends ElggObject {
 
         $this->attributes['subtype'] = "etherpad";
     }
-    
+
     public static function PadNameGenerator() {
         $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
         $random_string_length = 10;
@@ -40,7 +40,7 @@ class Pad extends ElggObject {
         for ($i = 0; $i < $random_string_length; $i++) {
             $stringpad .= $characters[rand(0, strlen($characters) - 1)];
         }
-        
+
         return $stringpad;
     }
 

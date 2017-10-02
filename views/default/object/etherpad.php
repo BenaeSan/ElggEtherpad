@@ -22,17 +22,12 @@
 $full = elgg_extract('full_view', $vars, FALSE);
 $pad = elgg_extract('entity', $vars, FALSE);
 
-var_dump($pad);
-
 if (!$pad) {
     return TRUE;
 }
 
 $owner = $pad->getOwnerEntity();
 $vars['owner_url'] = "etherpad/owner/$owner->username";
-//$by_line = elgg_view('page/elements/by_line', $vars);
-
-$subtitle = "$by_line";
 
 $metadata = '';
 if (!elgg_in_context('widgets') && !elgg_in_context('gallery')) {
@@ -52,7 +47,7 @@ if ($full) {
         'subtitle' => $subtitle,
         'content' => $pad->description,
     );
-    
+
     $url_update = "etherpad/updateWiki/$pad->guid";
     elgg_register_menu_item('title', array(
         'name' => 'etherpad',
@@ -62,18 +57,15 @@ if ($full) {
     ));
 
     $params = $params + $vars;
-    //$summary = elgg_view('object/elements/summary', $params);
-
+    
     $padFrame = elgg_view('output/etherpadframe', array(
         'url' => $pad->url,
     ));
 
-    //$text = elgg_view('output/longtext', array('value' => $pad->description));
-
     $body = "$padFrame $output_link $extra";
 
     echo elgg_view('object/elements/full', array(
-        'entity' => $pad,        
+        'entity' => $pad,
         'body' => $body,
     ));
 } else {
@@ -84,7 +76,7 @@ if ($full) {
         'entity' => $pad,
         'metadata' => $metadata,
         'subtitle' => $subtitle,
-        'content' => $excerpt,        
+        'content' => $excerpt,
     );
     $params = $params + $vars;
     echo elgg_view('object/elements/summary', $params);

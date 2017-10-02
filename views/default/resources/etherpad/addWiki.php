@@ -22,15 +22,10 @@
 $guid = elgg_extract('guid', $vars);
 $page = get_entity($guid);
 
-elgg_dump("------PAGE-------");
-elgg_dump($page);
-elgg_dump("/------PAGE-------");
-
-
-if($page->pad_id){
+if ($page->pad_id) {
     $urlpad = "etherpad/view/" . $page->pad_id;
-}else{
-    $pad = new Pad();    
+} else {
+    $pad = new Pad();
     $pad->name = $page->name;
     $pad->url = Pad::PadNameGenerator();
     $pad->page_id = $page->guid;
@@ -39,14 +34,4 @@ if($page->pad_id){
     $page->save();
     $urlpad = "etherpad/view/" . $pad->guid;
 }
-
-
-elgg_dump("------PAD-------");
-elgg_dump($pad);
-elgg_dump("/------/PAD-------");
-
-elgg_dump("------PAGE-------");
-elgg_dump($page);
-elgg_dump("/------PAGE-------");
-
 forward($urlpad);
