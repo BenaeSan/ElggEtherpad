@@ -30,15 +30,15 @@ $owner = $pad->getOwnerEntity();
 $vars['owner_url'] = "etherpad/owner/$owner->username";
 
 $metadata = '';
-if (!elgg_in_context('widgets') && !elgg_in_context('gallery')) {
+/*if (!elgg_in_context('widgets') && !elgg_in_context('gallery')) {
     // only show entity menu outside of widgets and gallery view
     $metadata = elgg_view_menu('entity', array(
         'entity' => $vars['entity'],
         'handler' => 'etherpad',
         'sort_by' => 'priority',
-        'class' => 'elgg-menu-hz',
+        //'class' => 'elgg-menu-hz',
     ));
-}
+}//*/
 
 if ($full) {
     $params = array(
@@ -60,14 +60,14 @@ if ($full) {
     
     $padFrame = elgg_view('output/etherpadframe', array(
         'url' => $pad->url,
-    ));
+    ));//*/
 
     $body = "$padFrame $output_link $extra";
 
     echo elgg_view('object/elements/full', array(
         'entity' => $pad,
         'body' => $body,
-    ));
+    ));//*/
 } else {
     // brief view
     $excerpt = elgg_get_excerpt($pad->description);
@@ -77,7 +77,7 @@ if ($full) {
         'metadata' => $metadata,
         'subtitle' => $subtitle,
         'content' => $excerpt,
-    );
+    );//*/
     $params = $params + $vars;
     echo elgg_view('object/elements/summary', $params);
 }
