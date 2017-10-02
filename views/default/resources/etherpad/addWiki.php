@@ -34,4 +34,5 @@ if ($page->pad_id) {
     $page->save();
     $urlpad = "etherpad/view/" . $pad->guid;
 }
+$urlpad .= "/wiki";
 forward($urlpad);

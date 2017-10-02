@@ -25,14 +25,6 @@ if (!$container) {
 
 $title = $page->title;
 
-if (elgg_instanceof($container, 'group')) {
-    elgg_push_breadcrumb($container->name, "pages/group/$container->guid/all");
-} else {
-    elgg_push_breadcrumb($container->name, "pages/owner/$container->username");
-}
-pages_prepare_parent_breadcrumbs($page);
-elgg_push_breadcrumb($title);
-
 $content = elgg_view_entity($page, array('full_view' => true));
 $content .= elgg_view_comments($page);
 
@@ -45,6 +37,7 @@ if ($page->canEdit() && $container->canWriteToContainer(0, 'object', 'page')) {
         'text' => elgg_echo('pages:newchild'),
         'link_class' => 'elgg-button elgg-button-action',
     ));
+
     $url_edit = "etherpad/addWiki/$page->guid";
     elgg_register_menu_item('title', array(
         'name' => 'etherpad',

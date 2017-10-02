@@ -40,8 +40,8 @@ function etherpad_init() {
 
 function etherpad_page_handler($page) {
     elgg_load_library('elgg:etherpad');
-    //elgg_push_breadcrumb(elgg_echo('etherpad'), 'etherpad/all');
-    //elgg_push_context('etherpad');
+    elgg_push_breadcrumb(elgg_echo('etherpad'), 'etherpad/all');
+    elgg_push_context('etherpad');
 
     $page_type = elgg_extract(0, $page, 'all');
     $resource_vars = [
@@ -54,6 +54,8 @@ function etherpad_page_handler($page) {
             break;
         case 'view':
             $resource_vars['guid'] = $page[1];
+            $resource_vars['page_type'] = elgg_extract(2, $page, '');
+            
             echo elgg_view_resource('etherpad/view', $resource_vars);
             break;
         case 'owner':

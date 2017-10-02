@@ -19,13 +19,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ************************************************************************ */
 
-$page_type = elgg_extract('page_type', $vars);
-$guid = elgg_extract('guid', $vars);
 
+$guid = elgg_extract('guid', $vars);
+$page_type = elgg_extract('page_type', $vars);
 elgg_entity_gatekeeper($guid, 'object', 'etherpad');
 $pad = get_entity($guid);
-
-//$page_owner = elgg_get_page_owner_entity();
 
 $crumbs_title = $page_owner->name;
 
@@ -38,11 +36,11 @@ if (elgg_instanceof($page_owner, 'group')) {
     elgg_push_breadcrumb($crumbs_title, "etherpad/group/$page_owner->guid/all");
 } else {
     elgg_push_breadcrumb($crumbs_title, "etherpad/owner/$page_owner->username");
-}//*/
+}
 
 elgg_push_breadcrumb($pad->title);
 
-$params['content'] = elgg_view_entity($pad, array('full_view' => TRUE));
+$params['content'] = elgg_view_entity($pad, array('full_view' => TRUE, 'page_type'=>$page_type));
 
 $body = elgg_view_layout('content', $params);
 
