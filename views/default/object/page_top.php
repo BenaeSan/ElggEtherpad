@@ -101,8 +101,7 @@ if ($full) {
 
 } else {
 	// brief view
-
-	$excerpt = elgg_get_excerpt($page->description);
+	$excerpt = elgg_get_excerpt($annotation->value);
 
 	$params = array(
 		'entity' => $page,
