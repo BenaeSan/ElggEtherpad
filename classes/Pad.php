@@ -22,7 +22,7 @@
 /**
  * Description of Pad
  *
- * @author Benoit MOTTIN <benoitmottin@jade.fr>
+ * @author Benoit MOTTIN <benoit.mottin@jade.fr>
  */
 class Pad extends ElggObject {
 
